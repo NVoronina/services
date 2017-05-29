@@ -1,0 +1,44 @@
+<div class="container">
+    <h1>Информация о свободных местах</h1>
+    <div class="col-md-12">
+    Фильм: <strong><?=$info[0]->movie_name?></strong>
+    Дата: <strong><?=date("d.m.Y h:i",strtotime($info[0]->datetime));?></strong>
+        <form style="display: none" method="post" action="<?=MAIN?>films/buy-ticket/" class="buy" role="form">
+            <input type="hidden" value="<?=$info[0]->id_seance?>" name="id_seance">
+            <input type="submit" class="btn btn-default" value="Оплатить билет">
+        </form>
+    </div>
+    <div class="col-md-12 text-center">
+        <?$rowTmp = $places[0]->row;?>
+        <div class="col-md-12">
+            <? foreach ($places as $place):?>
+                <?$check = 0;if(!empty($info)):?>
+                    <?foreach($info as $reserved):?>
+                        <?if($place->row == $reserved->place_row && $place->number == $reserved->place_number && $reserved->ticket_status == 2):?>
+                            <?if($place->row != $rowTmp):?>
+                                <br><span class="chair-bought"><?=$place->row?>/<?=$place->number?></span><br>
+                            <?else:?>
+                                <span class="chair-bought"><?=$place->row?>/<?=$place->number?></span>
+                            <?endif?>
+                        <?$check = 1;break;endif?>
+                        <?if($place->row == $reserved->place_row && $place->number == $reserved->place_number && $reserved->ticket_status == 1):?>
+                            <?if($place->row != $rowTmp):?>
+                                <br><span class="chair-reserved"><?=$place->row?>/<?=$place->number?></span><br>
+                            <?else:?>
+                                <span class="chair-reserved"><?=$place->row?>/<?=$place->number?></span>
+                            <?endif?>
+                        <?$check = 1;break;endif?>
+                    <?endforeach?>
+                <?endif?>
+                <?if($check == 0):?>
+                    <?if($place->row != $rowTmp):?>
+                        <br><span class="chair-free"><?=$place->row?>/<?=$place->number?></span>
+                    <?else:?>
+                        <span class="chair-free"><?=$place->row?>/<?=$place->number?></span>
+                    <?endif?>
+                <?endif?>
+            <?$rowTmp = $place->row; endforeach?>
+        </div>
+        <button class="btn btn-success reserve" style="display: none" id="<?=$info[0]->id_seance?>">Забронировать</button>
+    </div>
+</div>

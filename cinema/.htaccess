@@ -1,0 +1,15 @@
+# кодировки для всего проекта
+AddDefaultCharset UTF-8
+
+# точка входа по умолчанию
+DirectoryIndex index.php
+
+# правила для переработки полученного URL
+RewriteEngine On
+
+# если URI не оканчивается на имя index файла (!-f), то запускаем файл index.php L - значит последняя инструкция
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [L,QSA]
+
+

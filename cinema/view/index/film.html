@@ -1,0 +1,19 @@
+<div class="container">
+    <?if(!empty($info)):?>
+    <h1><?=$info->movie_name?> <?=$info->census?>+ </h1>
+
+    <div class="col-md-12 cinema-block">
+        <p><strong>Жанр:</strong> <?=$info->genre_name?></p>
+        <p><strong>Режиссер:</strong> <?=$info->directed_name?></p>
+        <p><strong>Актеры:</strong> <?foreach($info->actors as $actor):?>
+            <?=$actor->actor_name?>,
+            <?endforeach?>
+        </p>
+        <p><strong>Описание:</strong> <?=$info->desc?></p>
+
+        </div>
+    <?else:?>
+    <div class="col-md-12">Информация о фильме не найдена</div>
+    <?endif?>
+
+</div>

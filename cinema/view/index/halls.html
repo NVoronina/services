@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+    <h1>Список залов</h1>
+    <?foreach($halls as $hall):?>
+    <a href="<?=MAIN?>cinema/hall-info/<?=$hall->ID?>/" class="cinema-link">
+        <div class="col-md-2 cinema-block">
+            <h3>Зал №<?=$hall->name?></h3>
+        </div>
+    </a>
+    <?endforeach?>
+    </div>
+</div>

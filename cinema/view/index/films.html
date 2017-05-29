@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Список фильмов на день</h1>
+    <div class="col-md-2">
+        <form method="post" action="<?=MAIN?>films/" role="form">
+            <label for="daytime">Выберите дату</label>
+            <input class="form-control" type="date" name="day" id="daytime">
+            <input type="submit" value="Отправить" class="btn btn-success">
+        </form>
+    </div>
+    <div class="col-md-10"></div>
+
+        <?if(!empty($seances)):?>
+            <?foreach($seances as $seance):?>
+                <div class="col-md-12 cinema-block">
+                    <a class="cinema-link" href="<?=MAIN?>films/info/<?=$seance->ID_movie?>/">
+                        <h3><?=$seance->movie_name?> <?=$seance->census?>+</h3>
+                    </a>
+                    <p>Время:<?=$seance->time?></p>
+                    <p>Цена билета: <?=$seance->price?> р.</p>
+                    <a class="cinema-link" href="<?=MAIN?>films/buy/<?=$seance->ID_seance?>/">
+                        <button class="btn btn-danger">Купить билет</button>
+                    </a>
+                </div>
+            <?endforeach?>
+        <?elseif (isset($today)):?>
+            <div class="col-md-12">Сегодня сеансов нет</div>
+        <?else:?>
+            <div class="col-md-12">В указанный день сеансов нет</div>
+        <?endif?>
+
+</div>

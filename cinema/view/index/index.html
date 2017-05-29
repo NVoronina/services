@@ -1,0 +1,11 @@
+<div class="container">
+	<h1>Список кинотеатров</h1>
+	<?foreach($cinemas as $cinema):?>
+	<a href="<?=MAIN?>cinema/hall/<?=$cinema->ID?>/" class="cinema-link">
+		<div class="col-md-3 cinema-block">
+			<h3><?=$cinema->name?></h3><hr>
+			<p>Адрес: <?=$cinema->address?></p>
+		</div>
+	</a>
+	<?endforeach?>
+</div>

@@ -1,0 +1,14 @@
+<div class="container">
+    <h1>План зала</h1>
+    <div class="col-md-12 text-center">
+        <?$rowTmp = $info[0]->row;?>
+            <?foreach($info as $place):?>
+                <?if($place->row != $rowTmp):?>
+                    <br><span class="chair"><?=$place->row?>/<?=$place->number?></span>
+                <?$rowTmp = $place->row?>
+                <?else:?>
+                    <span class="chair"><?=$place->row?>/<?=$place->number?></span>
+                <?endif?>
+            <?endforeach?>
+    </div>
+</div>

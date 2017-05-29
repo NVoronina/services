@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="server" targetNamespace="urn:server" xmlns:typens="urn:server" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<message name="cinemaRequest">
+		<!--part name="someFunction" type="xsd:string"/-->
+	</message>
+	<message name="cinemaResponse">
+		<part name="arrayJson" type="xsd:string"/>
+	</message>
+	<message name="hallRequest">
+		<part name="idCinema" type="xsd:int"/>
+	</message>
+	<message name="hallResponse">
+		<part name="arrayJson" type="xsd:string"/>
+	</message>
+	<message name="placeRequest">
+		<part name="idCinema" type="xsd:int"/>
+	</message>
+	<message name="placeResponse">
+		<part name="arrayJson" type="xsd:string"/>
+	</message>
+	<message name="seancesRequest">
+		<part name="dateMysqlFormat" type="xsd:date"/>
+	</message>
+	<message name="seancesResponse">
+		<part name="arrayJson" type="xsd:string"/>
+	</message>
+	<message name="filmRequest">
+		<part name="idFilm" type="xsd:int"/>
+	</message>
+	<message name="filmResponse">
+		<part name="arrayJson" type="xsd:string"/>
+	</message>
+	<message name="placeSeanceRequest">
+		<part name="idSeance" type="xsd:int"/>
+	</message>
+	<message name="placeSeanceResponse">
+		<part name="arrayJson" type="xsd:string"/>
+	</message>
+	<message name="reservePlaceRequest">
+		<part name="idSeance" type="xsd:int"/>
+		<part name="placesArray" type="xsd:array"/>
+	</message>
+	<message name="reservePlaceResponse">
+		<part name="arrayJson" type="xsd:string"/>
+	</message>
+	<message name="buyPlaceRequest">
+		<part name="idSeance" type="xsd:int"/>
+		<part name="placesArray" type="xsd:array"/>
+	</message>
+	<message name="buyPlaceResponse">
+		<part name="arrayJson" type="xsd:string"/>
+	</message>
+	<portType name="cinemaClassPortType">
+		<operation name="getCinemas">
+			<input message="typens:cinemaRequest"/>
+			<output message="typens:cinemaResponse"/>
+		</operation>
+		<operation name="getHalls">
+			<input message="typens:hallRequest"/>
+			<output message="typens:hallResponse"/>
+		</operation>
+		<operation name="getPlace">
+			<input message="typens:placeRequest"/>
+			<output message="typens:placeResponse"/>
+		</operation>
+		<operation name="getSeances">
+			<input message="typens:seancesRequest"/>
+			<output message="typens:seancesResponse"/>
+		</operation>
+		<operation name="getFilmInfo">
+			<input message="typens:filmRequest"/>
+			<output message="typens:filmResponse"/>
+		</operation>
+		<operation name="getReserved">
+			<input message="typens:placeSeanceRequest"/>
+			<output message="typens:placeSeanceResponse"/>
+		</operation>
+		<operation name="reservedPlace">
+			<input message="typens:reservePlaceRequest"/>
+			<output message="typens:reservePlaceResponse"/>
+		</operation>
+		<operation name="buyTicket">
+			<input message="typens:buyPlaceRequest"/>
+			<output message="typens:buyPlaceResponse"/>
+		</operation>
+	</portType>
+	<binding name="cinemaClassBinding" type="typens:cinemaClassPortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="getCinemas">
+			<soap:operation soapAction="urn:myClassAction"/>
+			<input>
+				<soap:body namespace="urn:server" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body namespace="urn:server" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="getHalls">
+			<soap:operation soapAction="urn:myClassAction"/>
+			<input>
+				<soap:body namespace="urn:server" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body namespace="urn:server" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="getPlace">
+			<soap:operation soapAction="urn:myClassAction"/>
+			<input>
+				<soap:body namespace="urn:server" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body namespace="urn:server" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="getSeances">
+			<soap:operation soapAction="urn:myClassAction"/>
+			<input>
+				<soap:body namespace="urn:server" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body namespace="urn:server" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="getFilmInfo">
+			<soap:operation soapAction="urn:myClassAction"/>
+			<input>
+				<soap:body namespace="urn:server" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body namespace="urn:server" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="getReserved">
+			<soap:operation soapAction="urn:myClassAction"/>
+			<input>
+				<soap:body namespace="urn:server" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body namespace="urn:server" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="reservedPlace">
+			<soap:operation soapAction="urn:myClassAction"/>
+			<input>
+				<soap:body namespace="urn:server" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body namespace="urn:server" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+		<operation name="buyTicket">
+			<soap:operation soapAction="urn:myClassAction"/>
+			<input>
+				<soap:body namespace="urn:server" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body namespace="urn:server" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+
+	<service name="serverService">
+		<port name="myClassPort" binding="typens:cinemaClassBinding">
+			<soap:address location="http://localhost/exam-service/server/server.php"/>
+		</port>
+	</service>
+</definitions>
